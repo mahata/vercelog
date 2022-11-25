@@ -12,7 +12,7 @@ interface FrontMatter {
   date: string;
 }
 
-interface PostData extends FrontMatter {
+export interface PostData extends FrontMatter {
   id: string;
 }
 
