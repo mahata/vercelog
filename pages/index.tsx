@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-// import 'reset-css'
 import '@acab/reset.css';
 import styles from '../styles/Home.module.scss'
 
