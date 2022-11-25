@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from "next/link";
 import {ReactNode} from "react";
 
-import styles from './layout.module.scss'
-import utilStyles from '../styles/utils.module.scss'
+import styles from '@/components/layout.module.scss'
+import utilStyles from '@/styles/utils.module.scss'
 
 export const siteTitle = '存在証明 - Next.js 習作バージョン'
 
