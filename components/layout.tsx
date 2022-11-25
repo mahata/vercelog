@@ -1,12 +1,17 @@
 import Head from "next/head";
 import Image from 'next/image'
+import {ReactNode} from "react";
 
 import styles from './layout.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 
 export const siteTitle = '存在証明 - Next.js 習作バージョン'
 
-export default function Layout({children}: any) {
+type Props = {
+  children?: ReactNode
+}
+
+export default function Layout({children}: Props) {
   return (
     <div className={styles.container}>
       <Head>
