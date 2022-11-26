@@ -16,6 +16,7 @@ export interface PostData extends FrontMatter {
   id: string;
 }
 
+// TODO: getSortedPostsData() が postsDirectory を引数に取るようになればテスト可能になるはず
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);

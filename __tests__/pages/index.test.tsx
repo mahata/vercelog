@@ -12,10 +12,6 @@ const dummyAllPostData = [{
 }];
 
 describe('index', () => {
-  it('foo', () => {
-    expect(1).toBe(1);
-  });
-
   it('render', () => {
     render(<Home allPostsData={dummyAllPostData} />);
 
