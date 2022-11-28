@@ -5,7 +5,6 @@ import '@acab/reset.css';
 import Layout, {siteTitle} from "@/components/layout";
 import utilStyles from '@/styles/utils.module.scss'
 import {getSortedPostsData, PostData} from "../lib/posts";
-import {ReactNode} from "react";
 
 type Props = {
   allPostsData: PostData[];
