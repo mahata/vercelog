@@ -6,7 +6,7 @@ import {ReactNode} from "react";
 import styles from '@/components/layout.module.scss'
 import utilStyles from '@/styles/utils.module.scss'
 
-export const siteTitle = '存在証明 - Next.js 習作バージョン'
+export const siteTitle = '元気のでるブログ'
 
 type Props = {
   children?: ReactNode
@@ -20,7 +20,7 @@ export default function Layout({children, home}: Props) {
         <link rel="icon" href="/favicon.ico"/>
         <meta
           name="description"
-          content="Next.js 習作"
+          content="お手製ブログ"
         />
         <meta name="og:title" content={siteTitle}/>
       </Head>
@@ -31,11 +31,10 @@ export default function Layout({children, home}: Props) {
               priority
               src="/images/profile.png"
               className={utilStyles.borderCircle}
-              height={144}
-              width={144}
+              height={64}
+              width={64}
               alt="Profile Icon"
             />
-            <h1 className={utilStyles.heading2Xl}>こんにちは!</h1>
           </>
         ) : (
           <>
@@ -44,16 +43,11 @@ export default function Layout({children, home}: Props) {
                 priority
                 src="/images/profile.png"
                 className={utilStyles.borderCircle}
-                height={108}
-                width={108}
+                height={48}
+                width={48}
                 alt="Profile Icon"
               />
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                こんにちは!
-              </Link>
-            </h2>
           </>
         )}
       </header>
@@ -61,7 +55,7 @@ export default function Layout({children, home}: Props) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
+          <Link href="/">← 記事一覧に戻る</Link>
         </div>
       )}
     </div>
