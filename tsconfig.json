@@ -1,4 +1,14 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "module": "commonjs",
+      "jsxImportSource": ""
+    },
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  },
   "compilerOptions": {
     "target": "es5",
     "lib": [

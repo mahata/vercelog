@@ -1,5 +1,6 @@
 import { testApiHandler } from 'next-test-api-route-handler';
-import handler from '@/pages/api/hello';
+// import handler from '@/pages/api/hello';
+import handler from '../../pages/api/hello';
 
 describe('hello', () => {
   it("returns JSON result", async () => {
