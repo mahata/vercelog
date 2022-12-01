@@ -17,6 +17,6 @@ describe('index', () => {
   it('render', () => {
     render(<Home allPostsData={dummyAllPostData} />);
 
-    expect(screen.getByText('自己紹介をここに書くんだって。')).toBeInTheDocument();
+    expect(screen.getByText('投稿記事')).toBeInTheDocument();
   });
 });
