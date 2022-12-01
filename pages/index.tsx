@@ -2,11 +2,10 @@ import Head from 'next/head'
 import Link from "next/link";
 
 import '@acab/reset.css';
-// import Layout, {siteTitle} from "@/components/layout";
 import Layout, {siteTitle} from "../components/layout";
-// import utilStyles from '@/styles/utils.module.scss'
 import utilStyles from '../styles/utils.module.scss'
 import {getSortedPostsData, PostData} from "../lib/posts";
+import Date from '../components/date'
 
 type Props = {
   allPostsData: PostData[];
@@ -34,7 +33,7 @@ export default function Home({ allPostsData }: Props) {
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
-                {date}
+                <Date dateString={date} />
               </small>
             </li>
           ))}
