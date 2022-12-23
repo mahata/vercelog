@@ -1,6 +1,6 @@
 ---
 title: '2022 年の振り返り'
-date: '2022-12-25'
+date: '2022-12-23'
 ---
 
 [去年に続き](https://mahata.gitlab.io/post/2021-12-25-retrospective/)、今年の出来事を振り返ってみようと思う。
