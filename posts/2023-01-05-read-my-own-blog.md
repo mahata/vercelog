@@ -7,9 +7,9 @@ date: '2023-01-05'
 
 今までは、この自作ブログには `sitemap.xml` が存在しなかったので、先の記事のように定期的にランダムな記事を取得して Slack にポストすることができなかった。
 
-少しずつ記事も増えてきたので、このブログでも `sitemap.xml` 生成するようにした。
+少しずつ記事も増えてきたので、このブログでも `sitemap.xml` を生成するようにした。
 
-この `sitemap.xml` の生成は少し楽をしていて [sitemap という npm モジュール](https://www.npmjs.com/package/sitemap)で半自動的に生成している。具体的には次のようにする。
+この `sitemap.xml` の生成は [sitemap という npm モジュール](https://www.npmjs.com/package/sitemap)で半自動的に生成している。具体的には次のようにする。
 
 ```sh
 $ ls posts | xargs -I {} echo "https://mahata.vercel.app/posts/{}" | sed 's/\.md$//' > urls.txt
