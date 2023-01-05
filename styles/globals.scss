@@ -51,3 +51,23 @@ blockquote p {
   margin: 10px 0;
   line-height: 1.7;
 }
+
+p code, li code {
+  display: inline-block;
+  padding: 0.1em 0.25em;
+  color: #444;
+  background-color: #e7edf3;
+  border-radius: 3px;
+  border: solid 1px #d6dde4;
+}
+
+pre {
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 5px;
+  background: #25292f;
+  color: #fff;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
