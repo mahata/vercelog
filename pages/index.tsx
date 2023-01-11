@@ -17,7 +17,6 @@ export default function Home({ allPostsData }: Props) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>投稿記事</h2>
         <ul className={utilStyles.list}>
@@ -32,7 +31,6 @@ export default function Home({ allPostsData }: Props) {
           ))}
         </ul>
       </section>
-
     </Layout>
   );
 }

@@ -31,11 +31,11 @@ export function getSortedPostsData() {
 
     // Use gray-matter to parse the post metadata section
     // TODO: date.title と date.date がないときにクラッシュするので、それをいい感じに skip する
-    const { data } = matter(fileContents);
+    const { data, content } = matter(fileContents);
     const frontMatter: FrontMatter = {
       title: data.title,
       date: data.date,
-      contentHtml: data.contentHtml || "",
+      contentHtml: content || "",
     }
 
     // Combine the data with the id

@@ -6,7 +6,8 @@ import {ReactNode} from "react";
 import styles from '@/components/layout.module.scss'
 import utilStyles from '@/styles/utils.module.scss'
 
-export const siteTitle = '元気のでるブログ'
+export const siteTitle = 'スプーキーズ見習いのブログ'
+export const baseUrl = 'https://mahata.vercel.app'
 
 type Props = {
   children?: ReactNode
@@ -18,9 +19,10 @@ export default function Layout({children, home}: Props) {
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico"/>
+        <link rel="alternate" href="https://mahata.vercel.app/feed" type="application/rss+xml" title={siteTitle} />
         <meta
           name="description"
-          content="お手製ブログ"
+          content="ソフトウェアに関する話だったり、そうでなかったり。"
         />
         <meta name="og:title" content={siteTitle}/>
       </Head>
