@@ -22,7 +22,7 @@ export default function Post({ postData }: Props) {
           content={
             stripTags(postData.contentHtml)
               .replaceAll("&quot;", "")
-              .slice(0, 140)
+              .slice(0, 512)
           }
         />
       </Head>
