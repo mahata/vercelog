@@ -3,65 +3,54 @@ title: 'Software Engineering at Google: Chapter 1 - What Is Software Engineering
 date: '2023-01-xx'
 ---
 
+『[Software Engineering at Google](https://learning.oreilly.com/library/view/software-engineering-at/9781492082781/)』の第一章「What Is Software Engineering」を読んだ感想をメモしていく。
+
 ## Hyrum's Law
+
+この章では「[Hyrum's Law](https://www.hyrumslaw.com/)」という言葉が導入される。本書の後の方でも何度か言及されるキーワードである。「Hyrum...誰...??」と思ったけど、これは著者の Hyrum Wright さんのことのようだ。
+
+本には次のように書かれている。
 
 > With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
 > 
-> (抄訳) 十分な数の API 利用者がいれば、契約で約束した内容は重要ではありません。あなたのシステムの観測可能な動作はすべて、誰かに依存されることになります。
+> (抄訳) 十分な数の API 利用者がいれば、契約で約束した内容は重要ではありません。あなたのシステムで観測できる挙動はすべて、誰かに依存されることになります。
 
-ピンとこなかったけど、ハッシュコンテナの話で理解できた。
+これはどういうことを言っているのだろうか。書籍では `hash container` を例に説明しているけど、もう少し具体的に Python で Hyrum's Law に該当する例を示してみよう。
 
-> As a result, if you ask any expert “Can I assume a particular output sequence for my hash container?” that expert will presumably say “No.” By and large that is correct, but perhaps simplistic. A more nuanced answer is, “If your code is short-lived, with no changes to your hardware, language runtime, or choice of data structure, such an assumption is fine. If you don’t know how long your code will live, or you cannot promise that nothing you depend upon will ever change, such an assumption is incorrect.”
-> 
-> (抄訳) 結果として、専門家に「ハッシュコンテナの出力順序は決まっているのですか」と聞くと、おそらく「いいえ」と答えるでしょう。大体においてそれは正しいのですが、単純に答えすぎています。もっとニュアンスを捉えるなら「あなたのコードが短命で、ハードウェアや言語のランタイム、データ構造の選択に変更がなければ、そう仮定して問題ないでしょう。しかし、あなたのコードがいつまで生き続けるか分からない、もしくは、あなたが依存しているものが何も変わらないことを約束できないなら、そのような仮定は正しくありません。"
+Python では dict オブジェクトへのデータ挿入順が伝統的には保持されなかった。しかし [バージョン 3.7 から dict オブジェクトの挿入順序が保存される](https://docs.python.org/ja/3/whatsnew/3.7.html)。それでは、`dict` がデータの挿入順を保持することに依存するコードを書いて良いのかというと...微妙である。まだ見ぬバージョンでこの振る舞いが変わる可能性もある。
 
-> Some languages specifically randomize hash ordering between library versions or even between execution of the same program in an attempt to prevent dependencies. But even this still allows for some Hyrum’s Law surprises: there is code that uses hash iteration ordering as an inefficient random-number generator. 
-> 
-> (抄訳) 言語によっては、依存性を防ぐために、ライブラリのバージョン間や同じプログラムの実行間でさえ、ハッシュの順序を特別にランダム化するものがあります。しかし、これでもまだハイラムの法則のような驚きがあります。ハッシュの繰り返し順序を非効率な乱数発生器として使うコードがあるのです。
+そして「あなたのシステムで観測できる挙動はすべて、誰かに依存されることになります」というのは、バージョン 3.6 までの Python では dict を経由することで、これを疑似ランダマイザーとして使うプログラマーがいたであろう、という意味だ。たくさんの API (この例では Python の dict オブジェクトの API) ユーザーが存在するので、**たまたま** 未定義の振る舞いを観測したプログラマーが、それに依存したコードを書いてしまうのである。
 
-(後の方で Software Engineering Versus Programming があるけど)
+プログラミング言語の未定義な振る舞いを活用したプログラムは「賢い」プログラムである。しかし、このような「賢さ」はソフトウェアエンジニアリングの文脈では褒められるものではない、としている。
 
-> We’ve taken to saying, “It’s programming if ‘clever’ is a compliment, but it’s software engineering if ‘clever’ is an accusation.” 
+## Scale and Efficiency (スケールと効率性)
 
-そういうハッシュの振る舞いを賢く利用するようなのはプログラミングであってソフトウェアエンジニアリングではない、という話。
+サービスのためのソースコードが線形に増えたとしても、ビルドシステムやバージョン管理がそれを扱う時間は線形に増えてはならない、という旨の記述があった。
 
-## Scale and Efficiency
+ソースコードの成長に合わせてビルドシステムが遅くなるような現象は「ゆでガエル」と例えられている。急に顕在化する問題ではなく、じわじわと悪化する類の問題であるため、問題に気づきにくい。
 
-> Finally, the most precious asset of a software organization—the codebase itself—also needs to scale. If your build system or version control system scales superlinearly over time, perhaps as a result of growth and increasing changelog history, a point might come at which you simply cannot proceed. Many questions, such as “How long does it take to do a full build?”, “How long does it take to pull a fresh copy of the repository?”, or “How much will it cost to upgrade to a new language version?” aren’t actively monitored and change at a slow pace. They can easily become like the metaphorical boiled frog; it is far too easy for problems to worsen slowly and never manifest as a singular moment of crisis. Only with an organization-wide awareness and commitment to scaling are you likely to keep on top of these issues.
-> 
-> (抄訳) 最後に、ソフトウェア組織にとって最も貴重な資産であるコードベース自体も、スケールする必要があります。ビルドシステムやバージョン管理システムが、時間の経過とともに超線形 (superlinearly) にスケールしていく場合、おそらく成長や変更履歴の増加の結果として、前に進めなくなる時点が来るかもしれません。例えば「フルビルドにかかる時間は?」「リポジトリの新しいコピーを取得するのにかかる時間は?」「新しい言語バージョンにアップグレードするコストは?」というような問題は、ゆでガエルに例えられるように、徐々に悪化し、危機となる "瞬間" はありません。組織全体でスケーラビリティを意識し、問題に取り組むことで、対処することができるのです。
+## Trade-offs and Costs (トレードオフとコスト)
 
-ここら辺は Google でもそう。
-
-> automation (so that a single human can do more), consolidation/consistency (so that low-level changes have a limited problem scope), and expertise (so that a few humans can do more).
-> 
-> The more frequently you change your infrastructure, the easier it becomes to do so. 
-> 
-> 自動化（一人の人間がより多くのことをできるように）、統合/一貫性（低レベルの変更で問題の範囲が限定されるように）、専門性（少数の人間がより多くのことをできるように）です。
-> 
-> インフラを頻繁に変更すればするほど、その変更は容易になります。
-> 
-
-## Trade-offs and Costs
+組織の健全性はキャッシュフローだけの問題ではない。次の一節は素晴らしい話だと思った。
 
 > Efficiency gains from keeping engineers happy, focused, and engaged can easily dominate other factors, simply because focus and productivity are so variable, and a 10-to-20% difference is easy to imagine.
 > 
 > (抄訳) エンジニアが幸せで、集中し、仕事に打ち込むことで得られる効率性は、他の要因を圧倒します。なぜなら、集中力と生産性は非常に変わりやすく、10～20%の差は簡単に想像できるからです。
 
-そう思われ続けたい。
+僕たちエンジニアの幸せに組織が投資することが、単なる福利厚生ではなくて組織としての成長に寄与するのだ、という話だ。「10~20% の差」という数字の根拠は特に書かれていなかったけど、直感的にもそのくらいの差はあるだろうと思う (少なく見積もっても)。
 
-なお、上は `the health of an organization isn’t just whether there is money in the bank, it’s also whether its members are feeling valued and productive.` からの流れ。
+## Example: Markers (マーカーの例)
 
-## Example: Markers
+「誰もがホワイトボードのマーカーがインク切れしていて時間を無駄にしたことがあるでしょう」という話からはじまり、「Google では、ほぼ全てのオフィスに無制限にマーカーを持ち出せるクローゼットがある」という自慢話が続く。
 
-マーカーが使いものにならないせいで無駄にしたコストは? 
+ホワイトボードを「使いたいときに使えるようにしておく」ことで得られるメリットが「ホワイトボードマーカーが盗まれる可能性」というリスクよりも大きい、ということだろう。そりゃそうだ、と思う。
 
-> Google tends to have unlocked closets full of office supplies, including whiteboard markers, in most work areas.
-> 
-> (抄訳) Googleでは、ほとんどのオフィスにホワイトボードマーカーを含む、事務用品が詰まった鍵のかかっていないクローゼットがあります。
+ところで、本書のマネージャーに関する章では「自分たちのメンバーを大人扱いすれば、メンバーは大人のように振る舞う」という話がある。そういう意味では、こういう文房具の管理をすることは社員に対する信頼の現れでもあるし、副次的な効果もあるかもしれない。
 
-## Revisiting Decisions, Making Mistakes
+## Revisiting Decisions, Making Mistakes (再訪: 決断すること、ミスをすること)
 
-> Contrary to some people’s instincts, leaders who admit mistakes are more respected, not less.
-> 
-> (抄訳) 人々の直感に反して、誤りを認めるリーダーは尊敬されるし、尊敬されないわけではない。
+この節では「誤りを認めるリーダーは、そうでないリーダーよりも尊敬される」という話が印象に残っている。これは「直感に反するかもしれない」という書かれ方であったけど、僕の直感とは合っている。
+
+リーダーは単なる役割なので、リーダーは単なる人間である。そうであればミスをする方が普通だし、ミスをしないかのように振る舞われると迷惑である。リーダーが jerk だと最悪だ。
+
+そういう意味では誤りを認めるリーダーは尊敬されるというより、誤りを認めないリーダーは同僚として迷惑、というだけの話かもしれない。
