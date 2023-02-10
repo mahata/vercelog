@@ -21,4 +21,16 @@ date: '2023-02-14'
 
 これには疑問符がつくぞ。
 
-TODO: 「Building Multicultural Capacity」から先はまだ何もしていない。 
+> We cannot expect the output to be valid if both the training data and those creating the software represent only a small subsection of people. 
+> 
+> 学習データも、ソフトウェアを作る人も、一部の人たちだけでは、アウトプットの有効性は期待できない。
+
+ソフトウェア作る人は関係なくない? (これは AI 文脈の話)
+
+> It begins with more comprehensive user-experience research. This research should be done with user groups that are multilingual and multicultural and that span multiple countries, socioeconomic class, abilities, and age ranges.
+> 
+> それは、より包括的なユーザー・エクスペリエンス調査から始まります。この調査は、多言語・多文化で、複数の国、社会経済階級、能力、年齢層にまたがるユーザーグループに対して行われるべきものです。
+
+そうですね。
+
+TODO: Challenge Established Processes から先 
