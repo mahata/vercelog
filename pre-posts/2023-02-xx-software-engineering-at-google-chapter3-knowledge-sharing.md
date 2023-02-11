@@ -3,6 +3,19 @@ title: 'Software Engineering at Google: Chapter 3 - Knowledge Sharing'
 date: '2023-02-13'
 ---
 
+これは『[Software Engineering at Google](https://learning.oreilly.com/library/view/software-engineering-at/9781492082781/)』の第三章の感想記事である。章のタイトルは「Knowledge Sharing」である。
+
+## プロジェクトの単一障害点 (SPOF) を作らないこと
+
+ある個人が、獲得した知識をチームに共有しない場合、その個人はチームの単一障害点 (SPOF) になる。その人がチームから離れると、プロジェクトが立ち行かなくなるからだ。特定個人が単一障害点にならないようにするためには、知識共有を文化として根付かせなければならない。
+
+ところで、個人が **善意から** 知識を溜め込んでしまう場合がある。プロジェクトの難所で、知識のある者が「私が対処します」と手をあげるような場合だ。これは短期的には開発速度が上がるかもしれないけど、長期的にはプロジェクトに不発弾を埋め込むような行為である。
+
+(TODO: 以降、まだ手つかず)
+
+---
+
+
 > SPOFs can arise out of good intentions: it can be easy to fall into a habit of “Let me take care of that for you.” But this approach optimizes for short-term efficiency (“It’s faster for me to do it”) at the cost of poor long-term scalability (the team never learns how to do whatever it is that needs to be done). 
 > 
 > SPOFは、善意から発生することもあります。"それは私に任せて "という習慣に陥りがちです。しかし、このアプローチは短期的な効率（「自分がやった方が早い」）を最適化するもので、長期的なスケーラビリティは低くなります（チームは、やるべきことが何であれ、やり方を学べない）。
