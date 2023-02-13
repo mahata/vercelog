@@ -3,26 +3,30 @@ title: 'Software Engineering at Google: Chapter 3 - Knowledge Sharing'
 date: '2023-02-13'
 ---
 
-これは『[Software Engineering at Google](https://learning.oreilly.com/library/view/software-engineering-at/9781492082781/)』の第三章の感想記事である。章のタイトルは「Knowledge Sharing」である。
+これは『[Software Engineering at Google](https://learning.oreilly.com/library/view/software-engineering-at/9781492082781/)』の第三章の感想記事である。章のタイトルは「Knowledge Sharing」だ。
 
 ## プロジェクトの単一障害点 (SPOF) を作らないこと
 
-ある個人が、獲得した知識をチームに共有しない場合、その個人はチームの単一障害点 (SPOF) になる。その人がチームから離れると、プロジェクトが立ち行かなくなるからだ。特定個人が単一障害点にならないようにするためには、知識共有を文化として根付かせなければならない。
+開発者が、獲得した知識をチームに共有しない場合、その開発者はチームの単一障害点 (SPOF) になる。その人がチームから離れると、プロジェクトが立ち行かなくなるからだ。特定の開発者が単一障害点にならないようにするためには、知識共有を文化として根付かせなければならない。
 
 ところで、個人が **善意から** 知識を溜め込んでしまう場合がある。プロジェクトの難所で、知識のある者が「私が対処します」と手をあげるような場合だ。これは短期的には開発速度が上がるかもしれないけど、長期的にはプロジェクトに不発弾を埋め込むような行為である。
+
+では、どうすればいいのか。本章では「ドキュメント化」をひとつの案としている。
+
+> Documented knowledge, on the other hand, can better scale not just to the team but to the entire organization.
+>
+> 文書化された知識は、チームだけでなく、組織全体への拡張性に優れています。 
+
+一方でドキュメントだけですべてが解決するともしていない。
+
+> So in a magical world in which everything is always perfectly and immediately documented, we wouldn’t need to consult a person any more, right? Not quite. Written knowledge has scaling advantages, but so does targeted human help.
+>
+> では、すべてが常に完璧に、そしてすぐに文書化される魔法の世界では、人に相談する必要はないのでしょうか? そうとも言えません。文書化された知識にはスケールメリットがありますが、関連知識を持つ人からの助けもまた然りです。
+
 
 (TODO: 以降、まだ手つかず)
 
 ---
-
-
-> SPOFs can arise out of good intentions: it can be easy to fall into a habit of “Let me take care of that for you.” But this approach optimizes for short-term efficiency (“It’s faster for me to do it”) at the cost of poor long-term scalability (the team never learns how to do whatever it is that needs to be done). 
-> 
-> SPOFは、善意から発生することもあります。"それは私に任せて "という習慣に陥りがちです。しかし、このアプローチは短期的な効率（「自分がやった方が早い」）を最適化するもので、長期的なスケーラビリティは低くなります（チームは、やるべきことが何であれ、やり方を学べない）。
-
-> Documented knowledge, on the other hand, can better scale not just to the team but to the entire organization. 
-> 
-> 一方、文書化された知識は、チームだけでなく、組織全体への拡張性に優れています。
 
 とはいえさ。
 
