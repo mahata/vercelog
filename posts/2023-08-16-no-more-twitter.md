@@ -3,7 +3,7 @@ title: 'さらば X (ex-Twitter)'
 date: '2023-08-16'
 ---
 
-[「Elon Musk’s X is throttling traffic to websites he dislikes」というタイトルの記事がワシントン・ポストに投稿されました](https://www.washingtonpost.com/technology/2023/08/15/twitter-x-links-delayed/)。
+[「Elon Musk’s X is throttling traffic to websites he dislikes」というタイトルの記事](https://www.washingtonpost.com/technology/2023/08/15/twitter-x-links-delayed/)がワシントン・ポストに投稿されました。
 
 X は超えてはいけない一線を超えたと思いました。
 
