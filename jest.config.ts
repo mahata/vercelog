@@ -1,4 +1,4 @@
-import createJestConfig from 'testing/createJestConfig';
+import createJestConfig from "testing/createJestConfig";
 
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
@@ -10,32 +10,35 @@ import createJestConfig from 'testing/createJestConfig';
  * https://nextjs.org/docs/testing
  * */
 export const jestConfig = {
-    // Automatically clear mock calls, instances and results before every test
-    clearMocks: true,
+	// Automatically clear mock calls, instances and results before every test
+	clearMocks: true,
 
-    // Indicates whether the coverage information should be collected while executing the test
-    collectCoverage: false,
+	// Indicates whether the coverage information should be collected while executing the test
+	collectCoverage: false,
 
-    // globalTeardown: './testing/wipeTestData.ts',
+	// globalTeardown: './testing/wipeTestData.ts',
 
-    // An array of directory names to be searched recursively up from the requiring module's location
-    moduleDirectories: ['node_modules', '<rootDir>'],
+	// An array of directory names to be searched recursively up from the requiring module's location
+	moduleDirectories: ["node_modules", "<rootDir>"],
 
-    // A list of paths to modules that run some code to configure or set up the testing framework before each test
-    setupFilesAfterEnv: ['./jest.setup.ts'],
+	// A list of paths to modules that run some code to configure or set up the testing framework before each test
+	setupFilesAfterEnv: ["./jest.setup.ts"],
 
-    // The test environment that will be used for testing
-    // testEnvironment: 'jest-environment-node',
-    testEnvironment: 'jsdom',
+	// The test environment that will be used for testing
+	// testEnvironment: 'jest-environment-node',
+	testEnvironment: "jsdom",
 
-    // The glob patterns Jest uses to detect test files
-    // testMatch: ['**/lib/**/*.spec.ts', '**/testing/**/*.spec.ts', '**/background/**/*.spec.ts'],
-    testMatch: ['**/*.test.ts', '**/*.test.tsx'],
+	// The glob patterns Jest uses to detect test files
+	// testMatch: ['**/lib/**/*.spec.ts', '**/testing/**/*.spec.ts', '**/background/**/*.spec.ts'],
+	testMatch: ["**/*.test.ts", "**/*.test.tsx"],
 
-    testTimeout: 30000,
-    transform: {
-        '^.+\\.(ts)$': 'ts-jest'
-    }
+	testTimeout: 30000,
+	transform: {
+		"^.+\\.(ts|tsx)$": "ts-jest",
+	},
+	transformIgnorePatterns: [
+		"node_modules/(?!(remark|unified|bail|is-plain-obj|trough|vfile|vfile-message|unist-util-stringify-position)/)",
+	],
 };
 
 export default createJestConfig(jestConfig);
