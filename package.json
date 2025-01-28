@@ -8,8 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"vitest": "vitest run --logHeapUsage",
-		"test": "vitest run --logHeapUsage",
-		"test:ci": "vitest run --logHeapUsage --ci"
+		"test": "vitest run --logHeapUsage"
 	},
 	"dependencies": {
 		"@acab/reset.css": "^0.5.3",
