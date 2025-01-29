@@ -1,24 +1,23 @@
-import { Feed } from 'feed'
-import {siteTitle, baseUrl} from "@/components/layout";
-import {getPostData, getSortedPostsData} from "../../lib/posts";
+import { baseUrl, siteTitle } from "@/components/layout";
+import { Feed } from "feed";
+import { getPostData, getSortedPostsData } from "../../lib/posts";
 
 export const generateFeed = async () => {
-
   const feed = new Feed({
     title: siteTitle,
-    description: '',
+    description: "",
     id: baseUrl,
     link: baseUrl,
-    language: 'ja',
-    copyright: `Yasunori MAHATA`,
+    language: "ja",
+    copyright: "Yasunori MAHATA",
     updated: new Date(), // TODO: 記事の最終更新日に変更
     feed: `${baseUrl}/feed`,
-  })
+  });
 
-  const posts = getSortedPostsData()
+  const posts = getSortedPostsData();
 
   for (const post of posts) {
-    const { contentHtml } = await getPostData(post.id)
+    const { contentHtml } = await getPostData(post.id);
     feed.addItem({
       title: post.title,
       description: contentHtml,
@@ -26,8 +25,8 @@ export const generateFeed = async () => {
       // id: post.id,
       link: `${baseUrl}/posts/${post.id}`,
       date: new Date(post.date),
-    })
+    });
   }
 
-  return feed.rss2()
-}
+  return feed.rss2();
+};

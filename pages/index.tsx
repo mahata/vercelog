@@ -1,15 +1,15 @@
-import Head from 'next/head'
+import Head from "next/head";
 import Link from "next/link";
 
-import '@acab/reset.css';
-import Layout, {siteTitle} from "../components/layout";
-import utilStyles from '../styles/utils.module.scss'
-import {getSortedPostsData, type PostData} from "../lib/posts";
-import DateComponent from '../components/date'
+import "@acab/reset.css";
+import DateComponent from "../components/date";
+import Layout, { siteTitle } from "../components/layout";
+import { type PostData, getSortedPostsData } from "../lib/posts";
+import utilStyles from "../styles/utils.module.scss";
 
 type Props = {
   allPostsData: PostData[];
-}
+};
 
 export default function Home({ allPostsData }: Props) {
   return (
@@ -36,10 +36,10 @@ export default function Home({ allPostsData }: Props) {
 }
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData
-    }
-  }
+      allPostsData,
+    },
+  };
 }

@@ -1,15 +1,15 @@
-import Layout from '../../components/layout'
-import {getAllPostIds, getPostData, PostData} from '../../lib/posts'
-import Head from 'next/head'
-import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.scss'
+import Head from "next/head";
+import DateComponent from "../../components/date";
+import Layout from "../../components/layout";
+import { type PostData, getAllPostIds, getPostData } from "../../lib/posts";
+import utilStyles from "../../styles/utils.module.scss";
 
 type Props = {
-  postData: PostData
-}
+  postData: PostData;
+};
 
 function stripTags(html: string): string {
-  return html.replace(/<[^>]*>/g, "")
+  return html.replace(/<[^>]*>/g, "");
 }
 
 export default function Post({ postData }: Props) {
@@ -17,39 +17,39 @@ export default function Post({ postData }: Props) {
     <Layout>
       <Head>
         <title>{postData.title}</title>
-        <meta
-          name="description"
-          content={
-            stripTags(postData.contentHtml)
-              .replaceAll("&quot;", "")
-              .slice(0, 512)
-          }
-        />
+        <meta name="description" content={stripTags(postData.contentHtml).replaceAll("&quot;", "").slice(0, 512)} />
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+          <DateComponent dateString={postData.date} />
         </div>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: contentHtml is by author (not from a random user) */}
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
+  const paths = getAllPostIds();
   return {
     paths,
-    fallback: false
-  }
+    fallback: false,
+  };
 }
 
-export async function getStaticProps({ params }: any) {
-  const postData = await getPostData(params.id)
+type PostParams = {
+  params: {
+    id: string;
+  };
+};
+
+export async function getStaticProps({ params }: PostParams) {
+  const postData = await getPostData(params.id);
   return {
     props: {
-      postData
-    }
-  }
+      postData,
+    },
+  };
 }
