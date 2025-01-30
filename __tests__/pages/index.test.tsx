@@ -1,25 +1,15 @@
-import { render, screen } from "@testing-library/react";
-import Home from "../../pages";
+import { getServerSideProps } from "@/pages/index";
+import type { GetServerSidePropsContext } from 'next';
 
-const dummyAllPostData = [
-  {
-    id: "id1",
-    title: "title1",
-    date: "2021-01-01",
-    contentHtml: "html1",
-  },
-  {
-    id: "id2",
-    title: "title2",
-    date: "2021-01-02",
-    contentHtml: "html2",
-  },
-];
+describe("Index page", () => {
+  it("should redirect to /pages/1", async () => {
+    const response = await getServerSideProps({} as GetServerSidePropsContext);
 
-describe("index", () => {
-  it("render", () => {
-    render(<Home allPostsData={dummyAllPostData} />);
-
-    expect(screen.getByText("投稿記事")).toBeInTheDocument();
+    expect(response).toEqual({
+      redirect: {
+        destination: "/pages/1",
+        permanent: false,
+      },
+    });
   });
 });
