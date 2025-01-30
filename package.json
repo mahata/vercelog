@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@acab/reset.css": "^0.5.3",
+    "@sentry/nextjs": "^8.52.0",
     "@types/node": "18.11.9",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
