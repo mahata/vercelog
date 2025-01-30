@@ -1,4 +1,4 @@
-const esModules = [
+export const esModules = [
   "bail",
   "ccount",
   "character-entities",
@@ -33,5 +33,3 @@ const esModules = [
   "vfile",
   "zwitch",
 ];
-
-exports.esModules = esModules;
