@@ -33,15 +33,11 @@ export default function Page({ allPostsData, currentPage, totalPages }: Props) {
           ))}
         </ul>
         <div className={utilStyles.pagination}>
-          {currentPage > 1 && (
-            <Link href={`/pages/${currentPage - 1}`}>前のページ</Link>
-          )}
+          {currentPage > 1 && <Link href={`/pages/${currentPage - 1}`}>前のページ</Link>}
           <span>
             {currentPage} / {totalPages}
           </span>
-          {currentPage < totalPages && (
-            <Link href={`/pages/${currentPage + 1}`}>次のページ</Link>
-          )}
+          {currentPage < totalPages && <Link href={`/pages/${currentPage + 1}`}>次のページ</Link>}
         </div>
       </section>
     </Layout>
