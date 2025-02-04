@@ -2,7 +2,7 @@
 
 It's a personal blog service by @mahata. It's served at [https://vercelog.mahata.org](https://vercelog.mahata.org/)
 
-## Tweak it loally
+## Tweak it locally
 
 It's nice to make sure your change doesn't break anything. The best way to do this is to set up a local pre-commit hook like this:
 
