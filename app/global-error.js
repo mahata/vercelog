@@ -1,9 +1,8 @@
-'use client';
+"use client";
 
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from "@sentry/nextjs";
 
 export default function GlobalError({ error }) {
-  // エラーをSentryに送信
   Sentry.captureException(error);
 
   return (
@@ -11,10 +10,7 @@ export default function GlobalError({ error }) {
       <body>
         <h2>An unknown error occurred</h2>
         <p>{error.message}</p>
-        <button
-          type="button"
-          onClick={() => Sentry.showReportDialog({ eventId: error.eventId })}
-        >
+        <button type="button" onClick={() => Sentry.showReportDialog({ eventId: error.eventId })}>
           Send feedback
         </button>
       </body>
