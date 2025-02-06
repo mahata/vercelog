@@ -1,0 +1,10 @@
+.custom-searchbox {
+  :global(.ais-SearchBox-input) {
+    padding-left: 2.5rem;
+  }
+
+  :global(.ais-SearchBox-submitIcon) {
+    width: 1rem;
+    height: 1rem;
+  }
+}

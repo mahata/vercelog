@@ -23,6 +23,9 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "paths": {
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
