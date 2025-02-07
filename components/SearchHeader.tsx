@@ -1,4 +1,4 @@
-import { liteClient as algoliasearch } from "algoliasearch/lite";
+import { algoliasearch } from "algoliasearch";
 import type { Hit } from "instantsearch.js";
 import type React from "react";
 import { Highlight, Hits, InstantSearch, SearchBox, useSearchBox } from "react-instantsearch";
