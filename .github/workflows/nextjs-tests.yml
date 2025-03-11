@@ -7,6 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash --noprofile --norc -eo pipefail {0}
     defaults:
       run:
         working-directory: ./
