@@ -1,5 +1,4 @@
 import "@/styles/globals.scss";
-import "@/styles/search.scss";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 

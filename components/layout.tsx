@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 
 import styles from "@/components/layout.module.scss";
 import utilStyles from "@/styles/utils.module.scss";
-import SearchHeader from "./SearchHeader";
 
 export const siteTitle = "スプーキーズ見習いのブログ";
 export const baseUrl = "https://mahata.vercel.app";
@@ -25,9 +24,6 @@ export default function Layout({ children, home }: Props) {
         <meta name="og:title" content={siteTitle} />
       </Head>
       <header className={styles.header}>
-        <div className={styles.searchHeader}>
-          <SearchHeader />
-        </div>
         <Link href="/">
           <Image
             priority

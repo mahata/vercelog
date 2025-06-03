@@ -45,24 +45,24 @@ describe("Middleware", () => {
     expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path?key=value`);
   });
 
-  it.each([
-    "vercelog-abc123-mahatas-projects.vercel.app",
-    "vercelog-xyz789-mahatas-projects.vercel.app",
-  ])("allows access from valid Vercel preview URLs: %s", async (vercelPreviewDomain) => {
-    const request = createMockRequest(vercelPreviewDomain, `https://${vercelPreviewDomain}/some-path`);
-    const response = await middleware(request);
+  it.each(["vercelog-abc123-mahatas-projects.vercel.app", "vercelog-xyz789-mahatas-projects.vercel.app"])(
+    "allows access from valid Vercel preview URLs: %s",
+    async (vercelPreviewDomain) => {
+      const request = createMockRequest(vercelPreviewDomain, `https://${vercelPreviewDomain}/some-path`);
+      const response = await middleware(request);
 
-    expect(response.status).toBe(200);
-  });
+      expect(response.status).toBe(200);
+    },
+  );
 
-  it.each([
-    "vercelog-mahatas-projects.vercel.app",
-    "other-project.vercel.app",
-  ])("redirects access from invalid Vercel URLs: %s", async (invalidVercelDomain) => {
-    const request = createMockRequest(invalidVercelDomain, `https://${invalidVercelDomain}/some-path`);
-    const response = await middleware(request);
+  it.each(["vercelog-mahatas-projects.vercel.app", "other-project.vercel.app"])(
+    "redirects access from invalid Vercel URLs: %s",
+    async (invalidVercelDomain) => {
+      const request = createMockRequest(invalidVercelDomain, `https://${invalidVercelDomain}/some-path`);
+      const response = await middleware(request);
 
-    expect(response.status).toBe(307);
-    expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path`);
-  });
+      expect(response.status).toBe(307);
+      expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path`);
+    },
+  );
 });
