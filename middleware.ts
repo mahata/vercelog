@@ -3,10 +3,20 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const targetDomain = "vercelog.mahata.org";
-  const allowedHosts = [targetDomain, "localhost:3000"];
+
+  const isAllowedHost = (host: string | null): boolean => {
+    if (!host) return false;
+
+    const allowedHosts = [targetDomain, "localhost:3000"];
+    if (allowedHosts.includes(host)) return true;
+
+    // Check for vercelog-*-mahatas-projects.vercel.app pattern
+    const vercelPreviewPattern = /^vercelog-.+-mahatas-projects\.vercel\.app$/;
+    return vercelPreviewPattern.test(host);
+  };
 
   const currentHost = request.headers.get("host");
-  if (!allowedHosts.includes(currentHost ?? "")) {
+  if (!isAllowedHost(currentHost)) {
     const url = new URL(request.url);
     url.host = targetDomain;
 

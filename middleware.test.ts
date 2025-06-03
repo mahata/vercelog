@@ -44,4 +44,38 @@ describe("Middleware", () => {
     expect(response.status).toBe(307);
     expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path?key=value`);
   });
+
+  it("allows access from valid Vercel preview URLs", async () => {
+    const vercelPreviewDomain = "vercelog-abc123-mahatas-projects.vercel.app";
+    const request = createMockRequest(vercelPreviewDomain, `https://${vercelPreviewDomain}/some-path`);
+    const response = await middleware(request);
+
+    expect(response.status).toBe(200);
+  });
+
+  it("allows access from Vercel preview URLs with different preview identifiers", async () => {
+    const vercelPreviewDomain = "vercelog-xyz789-mahatas-projects.vercel.app";
+    const request = createMockRequest(vercelPreviewDomain, `https://${vercelPreviewDomain}/some-path`);
+    const response = await middleware(request);
+
+    expect(response.status).toBe(200);
+  });
+
+  it("redirects access from invalid Vercel preview URLs missing the middle part", async () => {
+    const invalidVercelDomain = "vercelog-mahatas-projects.vercel.app";
+    const request = createMockRequest(invalidVercelDomain, `https://${invalidVercelDomain}/some-path`);
+    const response = await middleware(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path`);
+  });
+
+  it("redirects access from other vercel.app domains", async () => {
+    const otherVercelDomain = "other-project.vercel.app";
+    const request = createMockRequest(otherVercelDomain, `https://${otherVercelDomain}/some-path`);
+    const response = await middleware(request);
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe(`https://${targetDomain}/some-path`);
+  });
 });
