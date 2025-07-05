@@ -66,6 +66,18 @@ test.describe('Welcome Page', () => {
     // Wait for the page to be fully loaded
     await expect(page.getByRole('heading', { name: 'ようこそ', level: 1 })).toBeVisible();
 
+    // Add CSS to ensure Japanese fonts are loaded
+    await page.addStyleTag({
+      content: `
+        * {
+          font-family: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "YuGothic", "Yu Gothic", "Meiryo", "DejaVu Sans", sans-serif !important;
+        }
+      `
+    });
+
+    // Wait a bit for fonts to load
+    await page.waitForTimeout(2000);
+
     // Take a screenshot
     await page.screenshot({ 
       path: 'welcome-page-test-screenshot.png',

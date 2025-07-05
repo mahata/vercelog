@@ -10,8 +10,16 @@ export default function Welcome() {
       <Head>
         <title>ようこそ - {siteTitle}</title>
         <meta name="description" content="スプーキーズ見習いのブログへようこそ。ソフトウェア開発や技術に関する記事を投稿しています。" />
+        <style jsx>{`
+          .japanese-content {
+            font-family: "Noto Sans CJK JP", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "YuGothic", "Yu Gothic", "Meiryo", sans-serif;
+            font-feature-settings: "palt";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        `}</style>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} japanese-content`}>
         <h1 className={utilStyles.heading2Xl}>ようこそ</h1>
         <div className={utilStyles.headingMd}>
           <p>
