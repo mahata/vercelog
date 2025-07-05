@@ -9,7 +9,9 @@
     "lint": "biome check ./",
     "lint-fix": "biome check --write ./ --diagnostic-level=error --files-ignore-unknown=true",
     "vitest": "vitest run --logHeapUsage",
-    "test": "vitest run --logHeapUsage"
+    "test": "vitest run --logHeapUsage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@acab/reset.css": "^0.11.0",
@@ -31,6 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@playwright/test": "^1.53.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
